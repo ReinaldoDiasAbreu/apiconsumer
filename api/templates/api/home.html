@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Chuck Norris API Consumer
+{% endblock title %}
+
+{% block title-page %}
+    Chuck Norris API Consumer
+{% endblock title-page %}
+
+{% block conteudo %}
+    <div class="p-2 d-flex flex-row flex-wrap">
+    <blockquote class="blockquote">
+      <p class="mb-0 text-wrap">{{ frase.value }}</p>
+      <footer class="blockquote-footer">Fact about <cite title="autor"> Chuck Norris </cite></footer>
+    </blockquote>
+    </div>
+    <div class="p-2 d-flex flex-row justify-content-around">
+        <a class="btn btn-primary" href="{% url 'url_search' %}" role="button">Search</a>
+        <a class="btn btn-primary" href="{% url 'url_home'  %}" role="button">New</a>
+    </div>
+{% endblock conteudo %}
+

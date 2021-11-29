@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Chuck Norris API Consumer
+{% endblock title %}
+
+{% block title-page %}
+    Chuck Norris API Consumer
+{% endblock title-page %}
+
+{% block conteudo %}
+    <div class="p-2 d-flex flex-row flex-wrap">
+       <form method="GET" action="#">
+       {% csrf_token %}
+            <div class="form-group">
+                <label for="key">Search facts:</label>
+                <input type="search" class="form-control" id="key" name="key" placeholder="Search phrase">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+       </form>
+
+    </div>
+    {% if total > 0 %}
+            <p class="mb-0 text-wrap"> {{ total }} facts were found. </p>
+     {% endif %}
+    <div class="p-2 d-flex flex-row ">
+        {% if erro != "" %}
+            <p class="mb-0 text-wrap"> {{ erro }} </p>
+        {% endif %}
+        {% if total > 0 %}
+            <div class="p-2 d-flex flex-row">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Fact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for frase in busca %}
+                        <tr>
+                            <td>{{ frase.value }}</td>
+                        </tr>
+                     {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+{% endblock conteudo %}
+
